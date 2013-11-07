@@ -1,0 +1,31 @@
+#include "classic.h"
+#include <iostream>
+using namespace std;
+void Bravo(const Cd & disk);
+int main()
+{
+	Cd c1("Beatles", "Capitol", 14, 35.5);
+	Classic c2 = Classic("Piano Sonata in B flat, Fantasia in C",
+	"Alfred Brendel", "Philips", 2,57.17);
+	Cd *pcd = &c1;
+	cout << "using object directly:\n";
+	c1.Report();
+	c2.Report();
+	cout << "Using Type cd * ponter to objects:\n";
+	pcd->Report();
+	pcd = &c2;
+	pcd->Report();
+	cout << "Calling a function with a Cd refence argument:\n";
+	Bravo(c1);
+	Bravo(c2);
+	cout << "Testing assigment: ";
+	Classic copy;
+	copy = c2;
+	copy.Report();
+	system("pause");
+	return 0;
+}
+void Bravo(const Cd & disk)
+{
+	disk.Report();
+}
